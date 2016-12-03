@@ -1,0 +1,12 @@
+version: "{build}-{branch}"
+skip_tags: true
+build: false
+install:
+- set PATH=C:\msys64\mingw64\bin;C:\msys64\usr\bin;%PATH%
+- pacman -S --needed --noconfirm mingw-w64-x86_64-openblas
+test_script:
+- sh -c "autoreconf -i"
+- sh -c "./configure"
+- make
+- make check
+- make install
